@@ -75,7 +75,7 @@ class TuringMachine:
 
         self.transitions[state][rsymbol] = {
             "write": wsymbol,
-            "move": self._move_left if "<" else self._move_right,
+            "move": self._move_left if move == "<" else self._move_right,
             "target_state": target_state
         }
 
@@ -122,4 +122,6 @@ class TuringMachine:
         self.print_machine()
 
     def print_machine(self):
-        print "{} : [ {} ]".format(self.current_state, [('|{}|'.format(x) if i==self.tape_position else x) for i,x in enumerate(self.tape)])
+        tape = [('|{}|'.format(x) if i==self.tape_position else x) for i,x in enumerate(self.tape)]
+        print "{} : [ {} ]".format(self.current_state, 
+                                   ''.join(tape))
