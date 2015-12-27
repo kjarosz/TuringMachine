@@ -1,7 +1,7 @@
 from turing_machine import TuringMachine
 
-tm = TuringMachine("test_machine.desc")
-tm.set_starting_tape("BabbaaababaaabaaB")
+tm = TuringMachine("converter.desc")
+tm.set_starting_tape("abbaaababaaabaa")
 tm.reset()
-tm.run()
+tm.run(True)
 
