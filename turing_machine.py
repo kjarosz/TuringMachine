@@ -60,9 +60,9 @@ class TuringMachine:
 
         state = get_function_operand(0)
         rsymbol = get_function_operand(1)
-        wsymbol = get_function_operand(2)
-        move = get_function_operand(3)
-        target_state = get_function_operand(4)
+        target_state = get_function_operand(2)
+        wsymbol = get_function_operand(3)
+        move = get_function_operand(4)
 
         if not (move == "<" or move == ">"):
             raise Exception("Invalid tape move {}.".format(move))
@@ -102,7 +102,7 @@ class TuringMachine:
             self.halted = True
             return
 
-        if not self.tape[self.tape_position] in self.transitions[self.current_state]:
+        if not self.read_symbol() in self.transitions[self.current_state]:
             self.halted = True
             return
 
@@ -112,8 +112,12 @@ class TuringMachine:
         transition["move"]()
         self.current_state = transition["target_state"]
 
+    def read_symbol(self):
+        return self.tape[self.tape_position] if self.tape_position in range(len(self.tape)) else '_'
+
     def run(self, print_machine_states=False):
         self.reset()
+        self.print_machine()
         while not self.halted:
             self.step()
             if print_machine_states:

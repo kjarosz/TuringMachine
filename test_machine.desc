@@ -1,10 +1,6 @@
 init_state:q0
-final_states:q3
+final_states:q1
 
-[ q0, B, B, >, q1 ]
-
-[ q1, a, a, >, q2 ]
-[ q1, b, b, >, q1 ]
-
-[ q2, a, a, >, q3 ]
-[ q2, b, b, >, q1 ]
+[ q0, a, q0, b, > ]
+[ q0, b, q0, b, > ]
+[ q0, _, q1, _, < ]
