@@ -96,7 +96,7 @@ class TuringMachine:
 
     def step(self):
         state = self.current_state
-        symbol = self.tape[self.tape_position]
+        symbol = self.read_symbol()
 
         if not self.current_state in self.transitions:
             self.halted = True
